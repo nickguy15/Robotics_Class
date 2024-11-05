@@ -11,7 +11,7 @@ public class Teleop extends OpMode {
     public void init() {
 
     }
-
+    //automatically engage the locking mech that unlocks when trying to strafe and locks when going straight or turning
     @Override
     public void loop() {
         DcMotor frontLeftMotor = hardwareMap.dcMotor.get("frontLeftMotor");
