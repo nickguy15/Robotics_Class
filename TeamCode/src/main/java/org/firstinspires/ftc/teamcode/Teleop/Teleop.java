@@ -1,10 +1,14 @@
 package org.firstinspires.ftc.teamcode.Teleop;
 
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
+
 import android.provider.Settings;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+
+import org.firstinspires.ftc.teamcode.Classes.Hardware;
 
 public class Teleop extends OpMode {
     @Override
@@ -12,8 +16,11 @@ public class Teleop extends OpMode {
 
     }
     // TODO automatically engage the locking mech that unlocks when trying to strafe and locks when going straight or turning
+    // use a servo to engage the locking mech
     @Override
     public void loop() {
+        Hardware drive = new Hardware();
+
         DcMotor frontLeftMotor = hardwareMap.dcMotor.get("frontLeftMotor");
         DcMotor backLeftMotor = hardwareMap.dcMotor.get("backLeftMotor");
         DcMotor frontRightMotor = hardwareMap.dcMotor.get("frontRightMotor");
