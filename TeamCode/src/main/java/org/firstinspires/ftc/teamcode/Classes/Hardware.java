@@ -5,25 +5,26 @@ import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.har
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 public class Hardware {
     DcMotor frontLeftMotor;
     DcMotor backLeftMotor;
     DcMotor frontRightMotor;
     DcMotor backRightMotor;
+    Servo lockingMechServo;
 
-    double y = -gamepad1.left_stick_y; // Remember, Y stick value is reversed
-    double x = gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
-    double rx = gamepad1.right_stick_x;
 
-    public void Getmotors() {
+    public void getHW() {
         frontLeftMotor = hardwareMap.dcMotor.get("frontLeftMotor");
         backLeftMotor = hardwareMap.dcMotor.get("backLeftMotor");
         frontRightMotor = hardwareMap.dcMotor.get("frontRightMotor");
         backRightMotor = hardwareMap.dcMotor.get("backRightMotor");
+
+
     }
 
-    public void Drive() {
+    public void Drive(double y, double x, double rx) {
         frontRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         backRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 

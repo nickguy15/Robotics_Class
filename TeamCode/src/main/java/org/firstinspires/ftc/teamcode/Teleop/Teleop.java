@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Teleop;
 
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.gamepad1;
 import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
 
 import android.provider.Settings;
@@ -14,13 +15,17 @@ import org.firstinspires.ftc.teamcode.Classes.Hardware;
 public class Teleop extends OpMode {
     Hardware drive = new Hardware();
     public void init() {
-        drive.Getmotors();
+        drive.getHW();
     }
     // TODO automatically engage the locking mech that unlocks when trying to strafe and locks when going straight or turning
     // use a servo to engage the locking mech
 
     public void loop() {
-        drive.Drive();
+        double y = -gamepad1.left_stick_y; // Remember, Y stick value is reversed
+        double x = gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
+        double rx = gamepad1.right_stick_x;
+
+        drive.Drive(y, x, rx);
 
     }
 }
