@@ -15,7 +15,7 @@ import org.firstinspires.ftc.teamcode.Classes.Hardware;
 public class Teleop extends OpMode {
     Hardware drive = new Hardware();
     public void init() {
-        drive.getHW();
+        drive.getHW(hardwareMap);
     }
     // TODO automatically engage the locking mech that unlocks when trying to strafe and locks when going straight or turning
     // use a servo to engage the locking mech

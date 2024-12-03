@@ -5,6 +5,7 @@ import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.har
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 public class Hardware {
@@ -15,13 +16,13 @@ public class Hardware {
     Servo lockingMechServo;
 
 
-    public void getHW() {
-        frontLeftMotor = hardwareMap.dcMotor.get("frontLeftMotor");
-        backLeftMotor = hardwareMap.dcMotor.get("backLeftMotor");
-        frontRightMotor = hardwareMap.dcMotor.get("frontRightMotor");
-        backRightMotor = hardwareMap.dcMotor.get("backRightMotor");
+    public void getHW(HardwareMap hardwaremap) {
+        frontLeftMotor = hardwaremap.get(DcMotor.class, "frontLeftMotor");
+        backLeftMotor = hardwaremap.get(DcMotor.class, "frontRightMotor");
+        frontRightMotor = hardwaremap.get(DcMotor.class, "backLeftMotor");
+        backRightMotor = hardwaremap.get(DcMotor.class, "backRightMotor");
 
-
+        lockingMechServo = hardwaremap.get(Servo.class, "lockingMechServo");
     }
 
     public void Drive(double y, double x, double rx) {
@@ -29,14 +30,18 @@ public class Hardware {
         backRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
-        double frontLeftPower = (y + x + rx) / denominator;
-        double backLeftPower = (y - x + rx) / denominator;
-        double frontRightPower = (y - x - rx) / denominator;
-        double backRightPower = (y + x - rx) / denominator;
+        double frontLeftPower = (y + x + rx);
+        double backLeftPower = (y - x + rx);
+        double frontRightPower = (y - x - rx);
+        double backRightPower = (y + x - rx);
 
         frontLeftMotor.setPower(frontLeftPower);
         backLeftMotor.setPower(backLeftPower);
         frontRightMotor.setPower(frontRightPower);
         backRightMotor.setPower(backRightPower);
+    }
+
+    public void LockingMech() {
+
     }
 }
