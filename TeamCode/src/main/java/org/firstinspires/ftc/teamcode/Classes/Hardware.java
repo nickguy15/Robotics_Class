@@ -40,8 +40,18 @@ public class Hardware {
         frontRightMotor.setPower(frontRightPower);
         backRightMotor.setPower(backRightPower);
     }
+    public void setZero() {
+        lockingMechServo.setPosition(0.5);
 
-    public void LockingMech() {
-
+    }
+    public void LockingMechServos(boolean x, boolean y) {
+        if (x){
+            lockingMechServo.setPosition(1);
+        } else if (y) {
+            lockingMechServo.setPosition(0);
+        }
+        else {
+            lockingMechServo.setPosition(0.5);
+        }
     }
 }

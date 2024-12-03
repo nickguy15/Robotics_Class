@@ -16,6 +16,7 @@ public class Teleop extends OpMode {
     Hardware drive = new Hardware();
     public void init() {
         drive.getHW(hardwareMap);
+        drive.setZero();
     }
     // TODO automatically engage the locking mech that unlocks when trying to strafe and locks when going straight or turning
     // use a servo to engage the locking mech
@@ -25,7 +26,11 @@ public class Teleop extends OpMode {
         double x = gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
         double rx = gamepad1.right_stick_x;
 
+        boolean A = gamepad1.a;
+        boolean B = gamepad1.b;
+
         drive.Drive(y, x, rx);
+        drive.LockingMechServos(A, B);
 
     }
 }
